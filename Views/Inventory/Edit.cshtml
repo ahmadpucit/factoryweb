@@ -1,0 +1,102 @@
+﻿@model FactoryManagementSystem.Models.RawMaterial
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <div id="page-wrapper">
+             <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Edit Inventory
+                           
+                        </h1>
+                    </div>
+                    
+                    
+                </div>
+                
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="panel panel-default">
+                       <form action="/Inventory/edit_record/@ViewBag.Inventory.Id" method="post" id="add_new_inventroy">
+                       <div class="panel-heading">
+                           Edit Inventory
+                       </div>
+                       <div class="panel-body">
+                           <div class="col-lg-6">
+                                <div class="form-group" id="raw_material">
+                                            <label>Select Raw Material</label>
+                                            <select class="form-control" name="raw_material_name" id="raw_material_name">
+                                                @foreach (var x in ViewBag.RawMaterials)
+                                                {
+                                                    <option value="@x.Id">@x.name</option>
+                                                }
+                                                <option value="new">Add new</option>
+                                            </select>
+                                </div>
+                                 
+                           </div>
+                         <div class="col-lg-6">
+                               <div class="form-group">
+                                            <label>Enter Quantity</label>
+                                            <input class="form-control" name="quantity" type="number" value="@ViewBag.Inventory.quantity">
+                               
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                                <div class="form-group">
+                                            <label>Unit Price</label>
+                                            <input class="form-control" name="unit_price"  value="@ViewBag.Inventory.unit_price">
+                                          
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-12" style="text-align:center;">
+                               <button type="submit" class="btn btn-success btn-lg"  style="margin-right:5%;">Submit</button>
+                               <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                           </div>
+                           
+
+                       </div>
+                      </form>
+                   </div>
+                </div>
+             
+            </div>
+            
+        </div>
+
+<script>
+    $(function () {
+        $('#raw_material_name option[value="@ViewBag.Inventory.Iid"]').attr("Selected", "Selected");
+        $('#raw_material_name').change(function () {
+            if ($(this).val() == "new") {
+                $('#raw_material').append('<input class="form-control" name="new_raw_material_name" id="new_raw_material_name" PlaceHolder="Raw Material Name" required style="margin-top: 15px;" />');
+            }
+            else {
+                $('#new_raw_material_name').remove();
+            }
+        });
+        $('#add_new_inventroy').validate({
+            rules: {
+                // no quoting necessary
+                quantity: {
+                    required: true,
+                    number: true
+                },
+                unit_price: {
+                    required: true,
+                    number: true
+                },
+                new_raw_material_name: {
+                    required: true
+                }
+            }
+        });
+    });
+
+</script>

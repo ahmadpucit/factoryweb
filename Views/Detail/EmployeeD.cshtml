@@ -1,0 +1,66 @@
+﻿@{
+    @model List<FactoryManagementSystem.Models.Employee>
+    ViewBag.Title = "Employee Detail";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="~/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.js"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div id="page-wrapper">
+        <div class="panel panel-default container-fluid">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><h5>Employee Details</h5></div>
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>CNIC</th>
+                        <th>Salar</th>
+                        <th>Remaining Loan</th>
+                        <th>Take Loan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @{int sum = 0;}
+                    @foreach (var s in Model)
+                    {
+                        var query = from n in s.Loans select n.amount;
+                        int total_loan = query.Sum();
+                        
+                                    
+                        sum = sum + s.salary;
+                        <tr>
+                            <td>@s.name</td>
+                            <td>@s.cnic</td>
+                            <td>@s.salary</td>                         
+                            <td>@total_loan</td>
+                            <td><a href="/Loan/Form/@s.Id"><span class="glyphicon glyphicon-usd"></span></a></td>
+
+                        </tr>
+                    }
+                    <tr>
+                        <td>Total Salary</td>
+                        <td></td>
+                        <td>@sum</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

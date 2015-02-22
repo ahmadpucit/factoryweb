@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Add Loan";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div id="page-wrapper">
+
+        <div class="panel panel-default container-fluid">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add Loan</h3>
+            </div>
+            
+            <div class="panel-body">
+                <form action="/Loan/AddLoan" method="post">
+                    <input type="hidden" value=@Model name="emp_id" />
+                   
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">></span>
+                        <input type="number" class="form-control" placeholder="Amount" aria-describedby="basic-addon1" name="amount">
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">></span>
+                        <input type="number" class="form-control" placeholder="Interest Rate" aria-describedby="basic-addon1" name="interest">
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">></span>
+                        <input type="number" class="form-control" placeholder="Deduction per month" aria-describedby="basic-addon1" name="payment_per_month">
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <input type="submit" value="Add" class="form-control btn btn-primary" aria-describedby="basic-addon1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

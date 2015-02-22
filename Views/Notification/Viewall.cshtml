@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "View Notification";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="~/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.js"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table1').DataTable();
+    });
+</script>
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div id="page-wrapper">
+        <div class="panel panel-default container-fluid">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><h5>Notifications</h5></div>
+            <table id="table1" class="display">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Time</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    
+                    @foreach (var s in Model)
+                    {
+                        
+                        <tr>
+                            <td>@s.Id</td>
+                            <td>@s.type</td>
+                            <td>@s.amount</td>
+                            <td>@s.date.ToString("hh:mm tt dd/MM/yyyy") </td>
+                            <td><a href="/Notification/Edit/@s.Id"><span id="froming" class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td><a href="/Notification/Delete/@s.Id"><span class="glyphicon glyphicon-trash"></span></a></td>
+
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

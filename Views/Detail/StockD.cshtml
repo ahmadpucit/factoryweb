@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Stock Detail";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="~/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.js"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div id="page-wrapper">
+        <div class="panel panel-default container-fluid">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><h5>Stock Details</h5></div>
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Unit</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var s in Model)
+                    {
+
+                        <tr>
+                            <td>@s.Product.name.ToString()</td>
+                            <td>@s.unit_price</td>
+                            <td>@s.quantity</td>
+                            <td>@("Rs: " + s.quantity * s.unit_price)</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

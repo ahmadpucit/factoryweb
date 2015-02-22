@@ -1,0 +1,56 @@
+﻿@{
+    @model List<FactoryManagementSystem.Models.Loan>
+    ViewBag.Title = "Inventory Detail";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="~/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.js"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div id="page-wrapper">
+        <div class="panel panel-default container-fluid">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><h5>Inventory Details</h5></div>
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Loan Remaining</th>
+                        <th>Payment per month</th>
+                        <th>Interest</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var s in Model)
+                    {
+
+                        <tr>
+                            <td>@s.Employee.name.ToString()</td>
+                            <td>@s.amount</td>
+                            <td>@s.payment_per_month</td>
+                            <td>@s.interest %</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

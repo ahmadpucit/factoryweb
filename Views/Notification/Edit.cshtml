@@ -1,0 +1,53 @@
+﻿@{
+    
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+@model FactoryManagementSystem.Models.Notification
+<h1>
+    Home
+
+</h1>
+<div id="wrapper">
+    <!-- Navigation -->
+    <div id="page-wrapper">
+        <h1 class="text-center"><span class="label label-primary">Edit A Notification</span></h1>
+        <div class="panel panel-default container-fluid">
+            <div class="panel-heading">
+                <h3 class="panel-title">Edit Notification</h3>
+            </div>
+            <div class="panel-body">
+                <form action="/Notification/EditDone/@Model.Id" method="post">
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Type</span>
+                        <input type="text" class="form-control" value=@Model.type aria-describedby="basic-addon1" name="type">
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Amount</span>
+                        <input type="number" class="form-control" value=@Model.amount aria-describedby="basic-addon1" name="amount">
+                    </div>
+                    <br />
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>
+                            Payment
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="2">
+                            Recieved
+                        </label>
+                    </div>
+
+                    <br />
+                    <div class="input-group">
+                        <input type="submit" value="Add" class="form-control btn btn-primary" aria-describedby="basic-addon1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

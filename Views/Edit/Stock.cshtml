@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Stock Edit";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div id="page-wrapper">
+        <div class="panel panel-default container-fluid">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><h2>Stock Details</h2></div>
+            <table class="table table-hover">
+                <tr>
+                    <td><h4><span class="label label-info">Name</span></h4></td>
+                    <td><h4><span class="label label-info">Unit Price</span></h4></td>
+                    <td><h4><span class="label label-info">Quantity</span></h4></td>
+                    
+
+                </tr>
+
+                @foreach (var s in Model)
+                {
+
+                    <tr>
+                        <td><h2><span class="label label-default">@s.Product.name.ToString()</span></h2></td>
+                        <td><h5><span class="label label-default">@s.unit_price</span></h5><span class="glyphicon glyphicon-pencil">Edit</span><form method="post" action="/Edit/Stock_unit/@s.Id"><input type="number" class="form-control" name="amount" /><input type="submit" class="form-control btn btn-primary" /></form></td>
+                        <td><h5><span class="label label-default">@s.quantity</span></h5><span class="glyphicon glyphicon-pencil">Edit</span><form method="post" action="/Edit/Stock_quantity/@s.Id"><input type="number" class="form-control" name="amount" /><input type="submit" class="form-control btn btn-primary" /></form></td>
+                        
+
+                    </tr>
+                }
+
+
+            </table>
+        </div>
+
+    </div>
+</div>

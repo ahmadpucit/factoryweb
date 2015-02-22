@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_Layouta.cshtml";
+}
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <div id="page-wrapper">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Employee Salaries
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            Delays
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            
+                            <li id="month">
+                                <a>Month</a>
+                            </li>
+                            <li id="year">
+                                <a>Year</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div id="chartss">
+
+                </div>
+                <script>
+                    
+                    function clicking3() {
+                        $("#chartss").load("/Graph/Employee_Graph/0");
+                    }
+                    function clicking4() {
+                        $("#chartss").load("/Graph/Employee_Graph/1");
+                    }
+                    
+                    
+                    var month = document.getElementById("month");
+                    var year = document.getElementById("year");
+                    
+                    
+                    month.onclick = clicking3;
+                    year.onclick = clicking4;
+                    
+                </script>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <!-- /.panel -->
+        </div>
+        </div>
+    </div>
+

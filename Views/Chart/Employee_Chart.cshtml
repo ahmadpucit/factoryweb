@@ -1,0 +1,12 @@
+﻿<script src="~/js/Chart.min.js"></script>
+<script>
+
+                            var barChartData =@Model
+                            //window.onload = function () {
+                                var ctx = document.getElementById("canvas").getContext("2d");
+                                window.myBar = new Chart(ctx).Bar(barChartData, {
+                                    responsive: true
+                                });
+                          //  }
+</script>
+<canvas id="canvas" height="300" width="600"></canvas>

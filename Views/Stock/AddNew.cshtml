@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Stock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <div id="page-wrapper">
+             <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Add Stock
+                           
+                        </h1>
+                    </div>
+                    
+                    
+                </div>
+                
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="panel panel-default">
+                       <form action="/Stock/add_new" method="post" id="add_new_stock">
+                       <div class="panel-heading">
+                           Add new Stock
+                       </div>
+                       <div class="panel-body">
+                           <div class="col-lg-6">
+                                <div class="form-group" id="products">
+                                            <label>Select Product</label>
+                                            <select class="form-control" name="product_name" id="product_name">
+                                                @foreach(var x in Model)
+                                                {
+                                                    <option value="@x.Id">@x.name</option>
+                                                }
+                                                <option value="new">Add new</option>
+                                            </select>
+                                </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                               <div class="form-group">
+                                            <label>Enter Quantity</label>
+                                            <input class="form-control" name="quantity" type="number">
+                               
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                                <div class="form-group">
+                                            <label>Price per item</label>
+                                            <input class="form-control" name="unit_price">
+                                          
+                                        </div>
+                                 
+                           </div>
+                          
+                           <div class="col-lg-12" style="text-align:center;">
+                               <button type="submit" class="btn btn-primary btn-lg" style="margin-right:5%;">Submit</button>
+                               <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                           </div>
+                           
+
+                       </div>
+                      </form>
+                   </div>
+                </div>
+             
+            </div>
+            
+        </div>
+
+<script>
+    $(function () {
+        $('#product_name').change(function () {
+            if ($(this).val() == "new") {
+                $('#products').append('<input class="form-control" name="new_product_name" id="new_product_name" PlaceHolder="Product Name" required style="margin-top: 15px;" />');
+            }
+            else {
+                $('#new_product_name').remove();
+            }
+        });
+        $('#add_new_stock').validate({
+            rules: {
+                // no quoting necessary
+                quantity: {
+                    required: true,
+                    number:true
+                },
+                unit_price: {
+                    required: true,
+                    number: true
+                },
+                new_product_name:{
+                    required:true
+                }
+            }   
+        });
+    });
+
+</script>

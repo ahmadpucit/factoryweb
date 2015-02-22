@@ -1,0 +1,121 @@
+﻿@model FactoryManagementSystem.Models.Employee
+@{
+    ViewBag.Title = "Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <div id="page-wrapper">
+             <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Employees
+                           
+                        </h1>
+                    </div>
+                    
+                    
+                </div>
+                
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="panel panel-default">
+                       <form action="/Employees/add_new" method="post" id="add_new_emp">
+                       <div class="panel-heading">
+                           Add new Employee
+                       </div>
+                       <div class="panel-body">
+                           <div class="col-lg-6">
+                               <div class="form-group">
+                                            <label>Name</label>
+                                            
+                                            @Html.TextBoxFor(m => m.name, new { @class="form-control" })
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                               <div class="form-group">
+                                            <label>CNIC Number</label>
+                                           
+                                             @Html.TextBoxFor(m => m.cnic, new { @class="form-control" })
+                                        </div>
+                                 
+                           </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                            <label>Date Of Birth</label>
+                                            <input class="form-control date" name="dob">
+                                            
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                               <div class="form-group">
+                                            <label>Designation</label>
+                                            <input class="form-control" name="designation" type="text">
+                               
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                                <div class="form-group">
+                                            <label>Salary</label>
+                                            <input class="form-control" name="salary" type="number">
+                                          
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                                <div class="form-group">
+                                            <label>Tax</label>
+                                            <input class="form-control" name="tax" type="number">
+                                          
+                                        </div>
+                                 
+                           </div>
+                          
+                           <div class="col-lg-6">
+                                <div class="form-group">
+                                            <label>Joining Date</label>
+                                            <input class="form-control date" name="join_date">
+                                           
+                                        </div>
+                                 
+                           </div>
+                           
+                           <div class="col-lg-12" style="text-align:center;">
+                               <button type="submit" class="btn btn-primary btn-lg" style="margin-right:5%;">Submit</button>
+                               <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                           </div>
+                           
+
+                       </div>
+                      </form>
+                   </div>
+                </div>
+             
+            </div>
+            
+        </div>
+
+<script>
+    $(function () {
+        $('#add_new_emp').validate({
+            rules: {
+                // no quoting necessary
+                quantity: {
+                    required: true,
+                    number: true
+                },
+                unit_price: {
+                    required: true,
+                    number: true
+                },
+                new_raw_material_name: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>

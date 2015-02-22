@@ -1,0 +1,102 @@
+﻿@model FactoryManagementSystem.Models.Inventory
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <div id="page-wrapper">
+             <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Add Inventory
+                           
+                        </h1>
+                    </div>
+                    
+                    
+                </div>
+                
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="panel panel-default">
+                       <form action="/Inventory/add_new" method="post" id="add_new_inventroy">
+                       <div class="panel-heading">
+                           Add new Inventory
+                       </div>
+                       <div class="panel-body">
+                           <div class="col-lg-6">
+                                <div class="form-group" id="raw_material">
+                                            <label>Select Raw Material</label>
+                                            <select class="form-control" name="raw_material_name" id="raw_material_name">
+                                                @foreach (var x in ViewBag.rawMaterials)
+                                                {
+                                                    <option value="@x.Id">@x.name</option>
+                                                }
+                                                <option value="new">Add new</option>
+                                            </select>
+                                </div>
+                                 
+                           </div>
+                         <div class="col-lg-6">
+                               <div class="form-group">
+                                            <label>Enter Quantity</label>
+                                           
+                                            @Html.TextBoxFor(m => m.quantity, new { @class="form-control"})
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-6">
+                                <div class="form-group">
+                                            <label>Unit Price</label>
+                                            
+                                            @Html.TextBoxFor(m => m.unit_price, new { @class="form-control" })
+                                        </div>
+                                 
+                           </div>
+                           <div class="col-lg-12" style="text-align:center;">
+                               <button type="submit" class="btn btn-success btn-lg"  style="margin-right:5%;">Submit</button>
+                               <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                           </div>
+                           
+
+                       </div>
+                      </form>
+                   </div>
+                </div>
+             
+            </div>
+            
+        </div>
+
+<script>
+    $(function () {
+        $('#add_new_inventroy').validate({
+            rules: {
+                // no quoting necessary
+                quantity: {
+                    required: true,
+                    number: true
+                },
+                unit_price: {
+                    required: true,
+                    number: true
+                },
+                new_raw_material_name: {
+                    required: true
+                }
+            }
+        });
+        $('#raw_material_name').change(function () {
+            if ($(this).val() == "new") {
+                $('#raw_material').append('<input class="form-control" name="new_raw_material_name" id="new_raw_material_name" PlaceHolder="Raw Material Name" required style="margin-top: 15px;" />');
+            }
+            else {
+                $('#new_raw_material_name').remove();
+            }
+        });
+        
+    });
+
+</script>
